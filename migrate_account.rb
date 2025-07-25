@@ -229,11 +229,11 @@ class ChatwootAccountMigrator
       puts "⚠️  Archivo database.yml no encontrado. Usando variables de entorno."
       @source_db_config = {
         'adapter' => 'postgresql',
-        'host' => ENV['DATABASE_HOST'] || 'localhost',
-        'port' => ENV['DATABASE_PORT'] || 5432,
-        'database' => ENV['DATABASE_NAME'] || 'chatwoot_development',
-        'username' => ENV['DATABASE_USERNAME'] || 'chatwoot',
-        'password' => ENV['DATABASE_PASSWORD'] || ''
+        'host' => ENV['POSTGRES_HOST'] || ENV['DATABASE_HOST'] || 'localhost',
+        'port' => ENV['POSTGRES_PORT'] || ENV['DATABASE_PORT'] || 5432,
+        'database' => ENV['POSTGRES_DATABASE'] || ENV['DATABASE_NAME'] || 'chatwoot_development' || 'chatwoot_production',
+        'username' => ENV['POSTGRES_USERNAME'] || ENV['DATABASE_USERNAME'] || 'chatwoot',
+        'password' => ENV['POSTGRES_PASSWORD'] || ENV['DATABASE_PASSWORD'] || ''
       }
     end
     
